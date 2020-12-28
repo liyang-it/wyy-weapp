@@ -1,0 +1,87 @@
+<!--wxs-->
+<wxs module="m1">
+  var formatNumber = function (n) {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}
+var getTime = function (datetime) {
+  var times = parseInt(datetime);
+  var date = getDate(times);
+  var year = date.getFullYear();
+  var month = date.getMonth() + 1;
+  var day = date.getDate();
+  return [year, month, day].map(formatNumber).join('-');
+}
+module.exports.getTime = getTime;
+</wxs>
+<!--wxs-->
+<van-dialog id="van-dialog" />
+<!-- 页面背景 -->
+<view class="bg">
+  <!--style="background:url({{alPicUrl}});"-->
+  <view class="bg-img" style="background:url({{alPicUrl}});"></view>
+</view>
+<!--二级遮罩  和左上角定位一致 用于 滚动时触发-->
+<view class="twoBg" style="height:{{navHeight}}px;display:{{isZz}};">
+  <view class="twoBg-img" ></view>
+</view>
+
+<!-- 左上角胶囊开始-->
+<!--left-capsule 是最上层，可以设置背景-->
+<view class="left-capsule" >
+  <!--left-capsule-nav 是用于定位左上角的位置-->
+  <view class="left-capsule-nav" style="height:{{navHeight}}px;">
+    <!--left-capsule-nav-content 是 胶囊主要内容-->
+    <view style="position:relative;top:{{capsuleTop}}px;" class="left-capsule-nav-content"> 
+      <!--back 胶囊 返回按钮-->
+      <view class="back" bind:tap="backPage"><van-icon name="arrow-left" color="white" size="20"/></view> 
+      <!-- line 胶囊 中间线条-->
+      <view class="line"></view> 
+      <!-- home 胶囊 返回首页按钮-->
+      <view class="home" bindtap="backHome"><van-icon name="wap-home-o" color="white" size="20"/></view> 
+    </view>
+    <view class="title" style="top:{{capsuleTop}}px;">正在播放</view>
+    <!-- <view class="ars" style="">{{ars}}</view> -->
+  </view>
+  <!-- 以上 可以 封装成自定义组件,在引入，这个地方是 胶囊外的内容-->
+<view class="main-content" style="top:{{navHeight}}px;" hidden="{{showMusic}}">
+  <view class="cover">
+    <image src="{{alPicUrl}}"></image>
+  </view>
+  <view class="desc">
+    <view style="font-weight: bold;">{{name}}</view>
+    <view class="desc-x">
+      <text>歌手:</text>
+      <span style="font-weight: bold;">{{ars}}</span>
+    </view>
+  </view>
+  <view class="play">
+    <view bindtap="leftStart"><image src="../../static/images/play/left.png"></image></view>
+    <view bindtap="playMusic">
+      <image  hidden="{{isPlay == false}}" src="../../static/images/play/stop.png"></image>
+      <image hidden="{{isPlay == true}}" src="../../static/images/play/start.png"></image>
+    </view>
+    <view bindtap="rightStart"><image src="../../static/images/play/right.png"></image></view>
+  </view>
+  <view class="btn">
+    <text bindtap="copyLink">下载</text>
+  </view>
+  <view class="pl">
+    <view class="pl-title">精彩评论</view>
+    <view class="pl-content">
+      <view wx:for="{{pls}}" wx:key="key" wx:for-item="item" wx:for-index="index">
+        <view class="pl-content-img" ><image src="{{item.user.avatarUrl}}"></image></view>
+        <view class="pl-content-title-name">{{item.user.nickname}}</view>
+        <view class="pl-content-title-time"> {{m1.getTime(item.time)}} </view>
+        <view class="pl-content-count">{{item.likedCount}}<image src="../../static/dz.png"></image></view>
+        <view class="pl-content-text">{{item.content}} </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view hidden="{{showMusic == false}}" class="loadText" style="top:{{navHeight}}px;">
+  <image src="../../static/images/gif/加载中.gif"></image>
+</view>
+</view>
+
+

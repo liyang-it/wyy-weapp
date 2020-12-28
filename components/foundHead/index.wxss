@@ -1,0 +1,29 @@
+/* components/gdHead/index.wxss */
+.found-head-main{
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+  /* background-color:#525288 ; */
+  background-color:#666666 ;
+}
+.found-head-main-search{
+  background-color: #ABB2B9;
+  width: 60%;
+  border-radius: 20px;
+  margin-left: 10px;
+}
+.found-head-main-search view{
+  width: 55%;
+  margin-left: 10px;
+}
+.found-head-main-search image{
+  width: 15px;
+  height: 15px;
+}
+.found-head-main-search text{
+  color: white;
+  position: relative;
+  top: -1px;
+  left: 5px;
+  font-size: 15px;
+}

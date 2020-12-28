@@ -1,0 +1,17 @@
+.gy{
+  z-index: 1;
+  position: relative;
+}
+.gy .gy_log{
+  width: 100%;
+}
+.gy .gy_git{
+  width: 82px;
+  height: 20px;
+}
+.sp{
+  padding: 10px;
+  font-size: 12px;
+  text-align: center;
+  color: #B3B3B3;
+}

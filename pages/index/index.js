@@ -12,7 +12,9 @@ Page({
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
-      url: '../home/home'
+      // url: '../home/home'
+      // 点击头像跳转到资源界面
+      url: '../resource/index.wxml'
     })
   },
   onLoad: function () {

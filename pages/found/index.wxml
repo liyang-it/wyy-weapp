@@ -1,0 +1,34 @@
+<!--歌单头部开始-->
+<found-head style="height:{{height}}px;" 
+height="{{height}}" 
+top="{{top}}"
+bottom="{{bottom}}"
+height2="{{height2}}"
+>
+
+</found-head>
+<!--歌头部结束-->
+<!--歌单开始-->
+<view class="rk" style="top:{{height}}px;">
+  <view class="rk_list" wx:for="{{gdList}}" wx:key="key1" wx:for-index="index" wx:for-item="item" bindtap="openGd" data-item="{{item}}">
+    <view class="rk_list_img">
+      <image src="{{item.coverImgUrl}}"></image>
+    </view>
+    <view class="rk_list_content">
+      <view wx:if="{{item.tracks.length !== 0}}">
+        <view wx:for="{{item.tracks}}" wx:key="key2" wx:for-index="index2" wx:for-item="item2" > 
+          <span>{{item2.first}} - {{item2.second}}</span>
+        </view>
+      </view>
+      <view wx:else>
+        <view>
+          <span>{{item.name}}</span>
+        </view>
+        <view>
+          <span>{{item.updateFrequency}}</span>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!--歌单结束-->

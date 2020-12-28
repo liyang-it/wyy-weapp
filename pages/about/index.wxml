@@ -1,0 +1,26 @@
+<!--导航栏-->
+<about-head height="{{height}}">
+  <!--关于数据开始-->
+<view class="gy" style="top:{{height}}px;">
+  <image src="../../static/images/logo3.png" class="gy_log"></image>
+  <view class="gy_content">
+    <van-cell  value="复制" bindtap="copyLink" data-text="{{gitLink}}">
+      <view slot="title">
+        <span class="custom-title" style="font-size: 15px;font-weight: bold;">GitHub地址</span>
+        <image class="gy_git" alt="GitHub Repo stars" style="position: relative;top: 5px;" src="https://img.shields.io/github/stars/liyang-it/wyy?style=social"></image>
+      </view>
+    </van-cell>
+    <van-cell  value="复制" bind:tap="copyLink" data-text="{{vueLink}}">
+      <view slot="title">
+        <span class="custom-title" style="font-size: 15px;font-weight: bold;">Vue版</span>
+      </view>
+    </van-cell>
+  </view>
+</view>
+<view class="sp" bind:tap="copyLink" data-text="{{emailLink}}">
+此小程序仅供学习，所有资源来自互联网，音乐版权归唱片公司所有，如有侵权请联系删除 
+1922802352@qq.com
+</view>
+<!--关于数据结束-->
+
+</about-head>

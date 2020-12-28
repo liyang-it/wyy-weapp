@@ -1,6 +1,8 @@
 //app.js
 App({
   onLaunch: function () {
+    // 自定义 导航栏
+    
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -35,5 +37,14 @@ App({
   },
   globalData: {
     userInfo: null
-  }
+  },
+  musicObj:{
+    isStart:false,
+    startMusicId: '',
+    music:{},
+    musicId: ''
+  },
+  pls: [],
+  musics:[], // 歌单音乐集合
+  startMusicIndex:0 //当前播放的音乐数组下标
 })

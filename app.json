@@ -1,15 +1,32 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/logs/logs",
-    "pages/home/home"
+    "pages/found/index",
+    "pages/about/index",
+    "pages/play/index"
+    
   ],
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "橘四喜",
-    "navigationBarTextStyle": "black"
+  "requiredBackgroundModes": ["audio", "location"],
+  "tabBar": {
+    "selectedColor": "#666666",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/found/index",
+        "text": "首页",
+        "iconPath": "/static/images/tabbar/zy.png",
+        "selectedIconPath": "/static/images/tabbar/sy-s.png"
+      },
+      {
+        "pagePath": "pages/about/index",
+        "text": "关于",
+        "iconPath": "/static/images/tabbar/gy.png",
+        "selectedIconPath": "/static/images/tabbar/gy-s.png"
+      }
+    ]
   },
-  "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "window": {
+    "navigationStyle": "custom"
+  },
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {}
 }

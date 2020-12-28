@@ -1,0 +1,7 @@
+/* components/gdHead/index.wxss */
+.about-head-main{
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+  background-color:#666666 ;
+}

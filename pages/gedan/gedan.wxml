@@ -1,0 +1,114 @@
+<!-- 左上角胶囊开始-->
+<!--left-capsule 是最上层，可以设置背景-->
+<view class="left-capsule" style="background-image: url({{gdImg}});">
+  <!--left-capsule-nav 是用于定位左上角的位置-->
+  <view class="left-capsule-nav" style="height:{{height}}px;background-image: url({{gdImg}});">
+    <!--left-capsule-nav-content 是 胶囊主要内容-->
+    <view style="position:relative;top:{{top}}px;" class="left-capsule-nav-content"> 
+      <!--back 胶囊 返回按钮-->
+      <view class="back" bind:tap="backPage"><van-icon name="arrow-left" color="white" size="20"/></view> 
+      <!-- line 胶囊 中间线条-->
+      <view class="line"></view> 
+      <!-- home 胶囊 返回首页按钮-->
+      <view class="home" bindtap="backHome"><van-icon name="wap-home-o" color="white" size="20"/></view> 
+    </view>
+  </view>
+  <!-- 以上 可以 封装成自定义组件,在引入，这个地方是 胶囊外的内容-->
+<view class="main-content" style="top:{{height}}px;">
+    
+  <view class="gd">
+  <van-dialog id="van-dialog" />
+  <!--头部歌单背景-->
+  <view class="bgImg">
+    <image src="{{gdImg}}"></image>
+  </view>
+  <view class="head">
+    <view class="head-slt">
+      <image src="{{gdImg}}"></image>
+    </view>
+    <view class="head-content">
+      <span>{{gdName}}</span>
+      <p>{{gdDesc}}</p>
+    </view>
+  </view>
+   <!--头部歌单背景结束-->
+    <!--歌单 歌曲列表开始-->
+  <view class="gqList">
+    <van-cell   label="{{item.ar[0].name + ' - ' + item.al.name}}" wx:for="{{tracks}}" wx:for-index="index" wx:for-item="item" wx:key="key" bind:tap="startMusic" data-index="{{index}}"  data-text="{{item}}">
+      <view slot="title" >
+        <div >
+          <font style="color: tan;font-size: 1rem;">{{index + 1}}</font>
+          <font class="van-ellipsis" style="margin-left: 10px;font-size: 1.0rem;" id="gqTitle">{{item.name}}</font>
+        </div>
+      </view>
+      <view slot="right-icon" catchtap="showXqView" data-text="{{item}}">
+        <!-- <van-icon name="play-circle-o" class="more" size="25"  style="background-color: white;position: absolute;right: 18px;"/> -->
+        <image src="../../static/images/xq-icon.png" 
+        style="background-color: white;position: absolute;right: 14px;width: 30px;height: 30px;"></image>
+    </view>
+    </van-cell>
+  </view>
+  <!--歌单 歌曲列表结束-->
+  <!--点击 歌曲详情 弹出层-->
+  <van-popup show="{{ showXq }}" 
+    round position="bottom" 
+    custom-style="height: 38%" 
+    bind:close="onClose">
+    <view class="popup">
+      <view>
+        <font style="font-size: 0.8rem;font-weight: 900;color:#2F4F4F;">歌曲:</font>
+        <font class="van-ellipsis" style="font-size: 1.0rem;font-weight: 900;margin-left: 10px;">{{music.name}}</font>
+        <font style="font-size: 0.8rem;font-weight: 900;color:#2F4F4F;margin-left: 5px;">歌手:</font>
+        <font class="van-ellipsis" style="font-size: 1.0rem;font-weight: 900;margin-left: 10px;">
+          <text wx:for="{{music.ar}}" wx:for-index="index2" wx:for-item="item2" wx:key="key2">{{item2.name}}   </text>
+        </font>
+      </view>
+      <view style="padding: 10px 0px;">
+        <van-cell bindtap="copyLink">
+          <view slot="title" >
+            <div>
+              <image src="../../static/images/xz.png" ></image>
+              <font class="van-ellipsis" style="font-size: 1.0rem;font-weight: 900;margin-left: 5px;position:relative;top: -5px;">
+                下载
+              </font>
+            </div>
+          </view>
+        </van-cell>
+        <van-cell >
+          <view slot="title" >
+            <div>
+              <image src="../../static/images/pl.png" ></image>
+              <font class="van-ellipsis" style="font-size: 1.0rem;font-weight: 900;margin-left: 5px;position:relative;top: -5px;">
+                评论
+              </font>
+            </div>
+          </view>
+        </van-cell>
+        <van-cell >
+          <view slot="title" >
+            <div>
+              <image src="../../static/images/gs.png" ></image>
+              <font class="van-ellipsis" style="font-size: 1.0rem;font-weight: 900;margin-left: 5px;position:relative;top: -5px;">
+                歌手
+              </font>
+            </div>
+          </view>
+        </van-cell>
+        <van-cell >
+          <view slot="title" >
+            <div>
+              <image src="../../static/images/mv.png" ></image>
+              <font class="van-ellipsis" style="font-size: 1.0rem;font-weight: 900;margin-left: 5px;position:relative;top: -5px;">
+                MV
+              </font>
+            </div>
+          </view>
+        </van-cell>
+      </view>
+    </view>
+  </van-popup>
+</view>
+  </view>
+</view>
+<!-- 左上角胶囊结束-->
+

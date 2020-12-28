@@ -1,0 +1,3 @@
+<view class="about-head-main" style="height:{{height}}px;">
+  <slot></slot>
+</view>

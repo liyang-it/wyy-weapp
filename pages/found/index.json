@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "found-head": "../../components/foundHead/index"
+  }
+}

@@ -1,0 +1,14 @@
+<ty-head></ty-head>
+<view class="main">
+  <view class="main-img">
+    <image src="{{gdImg}}"></image>
+  </view>
+  <view class="main-text">
+    <text class="main-text-label">歌单名称:</text>
+    <text class="main-text-value">{{gdName}}</text>
+  </view>
+  <view class="main-text">
+    <text class="main-text-label">歌单描述:</text>
+    <text class="main-text-value">{{gdDesc}}</text>
+  </view>
+</view>

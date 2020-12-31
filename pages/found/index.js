@@ -11,11 +11,25 @@ Page({
     jkl: false
   },
   openGd: (event)=>{
-    wx.navigateTo(
-      {
-        url: '/pages/gedan/gedan?id='+event.currentTarget.dataset.item.id
+
+    wx.request({
+      url: 'https://www.liyangit.top/liyang/music/getIsToGd.json',
+      success: function(res){
+        if(res.data.data == 0){
+          wx.navigateTo(
+            {
+              url: '/pages/gedanT/index?id='+event.currentTarget.dataset.item.id
+            }
+          )
+        }else{
+          wx.navigateTo(
+            {
+              url: '/pages/gedan/gedan?id='+event.currentTarget.dataset.item.id
+            }
+          )
+        }
       }
-    )
+    })
   },
   /**
    * 生命周期函数--监听页面加载

@@ -1,7 +1,14 @@
 //app.js
 App({
   onLaunch: function () {
-    // 自定义 导航栏
+    // 获取 右上角胶囊定位信息
+    let dwObj = wx.getMenuButtonBoundingClientRect()
+    let height_ = (
+      20 + dwObj.height + dwObj.top
+    )
+    console.info(dwObj)
+    this.appHead.navHeight = height_
+    this.appHead.capsuleTop = dwObj.top
     
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
@@ -34,6 +41,7 @@ App({
         }
       }
     })
+
   },
   globalData: {
     userInfo: null
@@ -46,5 +54,10 @@ App({
   },
   pls: [],
   musics:[], // 歌单音乐集合
-  startMusicIndex:0 //当前播放的音乐数组下标
+  startMusicIndex:0, //当前播放的音乐数组下标
+
+  appHead:{
+    navHeight: 0,
+    capsuleTop: 0
+  }
 })

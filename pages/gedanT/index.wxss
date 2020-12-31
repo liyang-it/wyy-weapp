@@ -1,0 +1,20 @@
+/* pages/gedanT/index.wxss */
+.main-img{
+  width: 100%;
+}
+.main-img image{
+  width: 100%;
+}
+.main-text{
+  padding: 10px;
+
+}
+.main-text .main-text-label{
+  font-weight: bold;
+  font-size: 12px;
+}
+.main-text .main-text-value{
+  font-weight: bold;
+  margin-left: 15px;
+  font-size: 15px;
+}

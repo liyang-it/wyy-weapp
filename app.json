@@ -2,10 +2,13 @@
   "pages": [
     "pages/found/index",
     "pages/about/index",
-    "pages/play/index"
-    
+    "pages/play/index",
+    "pages/gedanT/index"
   ],
-  "requiredBackgroundModes": ["audio", "location"],
+  "requiredBackgroundModes": [
+    "audio",
+    "location"
+  ],
   "tabBar": {
     "selectedColor": "#666666",
     "borderStyle": "white",

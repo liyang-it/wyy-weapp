@@ -1,3 +1,15 @@
+.bmz{
+  position: relative;
+  z-index: 1;
+  top: 150px;
+}
+.bmz text{
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+
+}
 .rk{
   padding: 10px 10px;
   position: relative;

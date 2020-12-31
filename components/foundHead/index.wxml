@@ -3,7 +3,7 @@
   <view class="found-head-main-search" 
   style="height:{{height2}}px;margin-top:{{top}}px;line-height:{{height2}}px;">
     <view>
-      <image src="../../static/images/search.png"></image><text>搜索歌曲</text>
+      <image src="../../static/images/search.png"></image><text style="margin-left: 10px;">搜索一下</text>
     </view>     
   </view>
   <slot></slot>

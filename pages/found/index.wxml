@@ -1,4 +1,4 @@
-<!--歌单头部开始-->
+
 <found-head style="height:{{height}}px;" 
 height="{{height}}" 
 top="{{top}}"
@@ -7,9 +7,12 @@ height2="{{height2}}"
 >
 
 </found-head>
-<!--歌头部结束-->
-<!--歌单开始-->
-<view class="rk" style="top:{{height}}px;">
+<view  class="bmz">
+  <text>不满足是向上的齿轮。</text>
+  <text>hello World</text>
+  <span>一首"起风了"听了足足三年,这是我的第一个练手小程序。</span>
+</view>
+<view class="rk" style="top:{{height}}px;" wx:if="{{jkl}}">
   <view class="rk_list" wx:for="{{gdList}}" wx:key="key1" wx:for-index="index" wx:for-item="item" bindtap="openGd" data-item="{{item}}">
     <view class="rk_list_img">
       <image src="{{item.coverImgUrl}}"></image>
@@ -31,4 +34,3 @@ height2="{{height2}}"
     </view>
   </view>
 </view>
-<!--歌单结束-->

@@ -1,0 +1,159 @@
+<!--pages/ss/sos/index.wxml-->
+<ty-head bgColor="{{bgColor}}"></ty-head>
+<view class="head">
+  <van-search
+  value="{{ value }}"
+  placeholder="请输入搜索关键词"
+  use-action-slot
+  bind:change="onChange"
+  bind:search="onSearch">
+  <view slot="action" bind:tap="okSearch">搜索</view>
+</van-search>
+</view>
+<!-- 热门搜索hidden="{{showHot}}"-->
+<view class="content" wx:if="{{showHot}}">
+  <view wx:if="{{show_his_search}}">
+      <text class="hot-title">搜索历史</text>
+      <view class="hit-search">
+        <view wx:for="{{his_search}}" bindtap="openResult" data-text="{{str}}" wx:for-item="str" wx:for-index="si">{{str}}</view>
+      </view>
+  </view>
+  <view>
+    <text class="hot-title">热搜榜</text>
+      <view class="hot-content">
+        <van-cell label="{{item.content}}" wx:for="{{hots}}" bindtap="openResult" data-text="{{item.searchWord}}">
+          <view slot="title"   >
+            <div >
+              <font style="color: red;font-size: 1.2rem;">{{index + 1}}</font>
+              <font class="van-ellipsis" style="margin-left: 10px;font-size: 1.0rem;font-weight: bold;">{{item.searchWord}}</font>
+            </div>
+          </view>
+          <view slot="right-icon">
+            <text style="color: #969799;font-size:12px;">{{item.score}}</text>
+          </view>
+        </van-cell>
+      </view>
+  </view>
+
+</view>
+<!--手动输入搜索显示筛选hidden="{{showSearch}}"-->
+<view  wx:if="{{showSearch}}" class="content">
+  <view>
+    <p style="color: #1989fa;margin-left: 10px;margin-top: -2px;">搜索“{{value}}”</p>
+  </view>
+  <van-cell wx:for="{{searchs}}" bindtap="openResult"  data-text="{{item.keyword}}">
+      <view slot="title" >
+        <div >
+          <van-icon name="search" />
+          <font class="van-ellipsis" style="margin-left: 10px;font-size: 1.0rem;font-weight: bold;">{{item.keyword}}</font>
+        </div>
+      </view>
+    </van-cell>
+</view>
+<!--搜索结果hidden="{{showResult}}"-->
+<view class="content"  wx:if="{{showResult}}">
+  <text class="hot-title">共搜索到:{{resultCount}}首相关歌曲</text>
+  <view>
+    <van-cell bind:tap="startMusic" label="{{item.name + '-' + item.artists[0].name}}" wx:for="{{results}}"  data-index="{{index}}"  data-text="{{item}}" >
+      <view slot="title" >
+        <div >
+          <font style="color: red;font-size: 1.2rem;">{{index + 1}}</font>
+          <font class="van-ellipsis" style="margin-left: 10px;font-size: 1.0rem;font-weight: bold;">{{item.name}}</font>
+        </div>
+      </view>
+      <view slot="right-icon" catchtap="showXqView" data-text="{{item}}">
+        <image src="../../../static/images/xq-icon.png" 
+        style="background-color: white;position: absolute;right: 5px;width: 30px;height: 30px;"></image>
+      </view>
+    </van-cell>
+  </view>
+  <view bindtap="loadGq" style="height: 50px;text-align: center;line-height: 50px;color: #B3B3B3;">
+    <van-icon name="search" />
+    <text>查询更多歌曲</text>
+  </view>
+</view>
+<!--点击 歌曲详情 弹出层-->
+<van-popup show="{{ showXq }}" 
+    round position="bottom" 
+    custom-style="height: 38%" 
+    bind:close="onClose">
+    <view class="popup">
+      <view>
+        <font style="font-size: 0.8rem;font-weight: 900;color:#2F4F4F;">歌曲:</font>
+        <font class="van-ellipsis" style="font-size: 1.0rem;font-weight: 900;margin-left: 10px;">{{music.name}}</font>
+        <font style="font-size: 0.8rem;font-weight: 900;color:#2F4F4F;margin-left: 5px;">歌手:</font>
+        <font class="van-ellipsis" style="font-size: 1.0rem;font-weight: 900;margin-left: 10px;">
+          <text wx:for="{{music.artists}}" wx:for-index="index2" wx:for-item="item2" wx:key="key2">{{item2.name}}   
+          
+          </text>
+        </font>
+      </view>
+      <view>
+        <van-cell bindtap="copyLink">
+          <view slot="title" >
+            <div>
+              <image src="../../../static/images/xz.png" ></image>
+              <font class="van-ellipsis" style="font-size: 1.0rem;font-weight: 900;margin-left: 5px;position:relative;top: -5px;">
+                下载
+              </font>
+            </div>
+          </view>
+        </van-cell>
+        <van-cell bindtap="openPl">
+          <view slot="title" >
+            <div>
+              <image src="../../../static/images/pl.png" ></image>
+              <font class="van-ellipsis" style="font-size: 1.0rem;font-weight: 900;margin-left: 5px;position:relative;top: -5px;">
+                评论
+              </font>
+            </div>
+          </view>
+        </van-cell>
+        <van-cell bindtap="openGs">
+          <view slot="title" >
+            <div>
+              <image src="../../../static/images/gs.png" ></image>
+              <font class="van-ellipsis" style="font-size: 1.0rem;font-weight: 900;margin-left: 5px;position:relative;top: -5px;">
+                歌手
+              </font>
+            </div>
+          </view>
+        </van-cell>
+        <van-cell bindtap="openMv">
+          <view slot="title" >
+            <div>
+              <image src="../../../static/images/mv.png" ></image>
+              <font class="van-ellipsis" style="font-size: 1.0rem;font-weight: 900;margin-left: 5px;position:relative;top: -5px;">
+                MV
+              </font>
+            </div>
+          </view>
+        </van-cell>
+      </view>
+    </view>
+  </van-popup>
+    <!-- 多个歌手-->
+    <van-popup show="{{ showGss }}" 
+    round position="bottom" 
+    closeable
+    custom-style="height: 35%" 
+    bind:close="onClose2">
+    <view class="popup">
+      <view>
+        <font style="font-size: 0.8rem;font-weight: 900;color:#2F4F4F;">歌手:</font>
+      </view>
+      <view style="padding: 10px 0px;">
+        <van-cell bindtap="openGs2" wx:for="{{gss}}" data-obj="{{item}}">
+          <view slot="title" >
+            <div>
+              <image src="../../../static/images/gs.png" ></image>
+              <font class="van-ellipsis" style="font-size: 1.0rem;font-weight: 900;margin-left: 5px;position:relative;top: -5px;">
+                {{item.name}}
+              </font>
+            </div>
+          </view>
+        </van-cell>
+
+      </view>
+    </view>
+  </van-popup>

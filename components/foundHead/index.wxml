@@ -1,9 +1,9 @@
 <view class="found-head-main" style="height:{{height}}px;">
   <!--搜索框-->
-  <view class="found-head-main-search" 
+  <view class="found-head-main-search" bindtap="search" 
   style="height:{{height2}}px;margin-top:{{top}}px;line-height:{{height2}}px;">
-    <view>
-      <image src="../../static/images/search.png"></image><text style="margin-left: 10px;">搜索一下</text>
+    <view >
+      <image src="../../static/images/search.png"></image><text style="margin-left: 10px;">起风了 - 麻辣椒也要卷</text>
     </view>     
   </view>
   <slot></slot>

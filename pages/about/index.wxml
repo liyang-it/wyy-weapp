@@ -16,10 +16,11 @@
       </view>
     </van-cell>
   </view>
+  <view class="sp" bind:tap="copyLink" data-text="{{emailLink}}">
+    <span>此小程序仅供学习，所有资源来自互联网。</span>
+  </view>
 </view>
-<view class="sp" bind:tap="copyLink" data-text="{{emailLink}}">
-  
-</view>
+
 <!--关于数据结束-->
 
 </about-head>

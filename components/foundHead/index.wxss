@@ -13,7 +13,7 @@
   margin-left: 10px;
 }
 .found-head-main-search view{
-  width: 55%;
+  width: 100%;
   margin-left: 10px;
 }
 .found-head-main-search image{
@@ -25,5 +25,5 @@
   position: relative;
   top: -1px;
   left: 5px;
-  font-size: 15px;
+  font-size: 12px;
 }

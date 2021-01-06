@@ -1,0 +1,36 @@
+/* pages/ss/sos/index.wxss */
+.head{
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+}
+.content{
+  padding: 0px 10px;
+  margin-top: 55px;
+  z-index: 1;
+}
+.content .hot-title{
+  font-weight: bold;
+}
+.content .hit-search{
+  padding: 10px 0px;
+  /* 设置内容 不允许跨行*/
+  white-space: nowrap;
+  /* 加入横线滚动条*/
+  overflow-x: auto;
+}
+.hit-search view{
+  display: inline;
+  font-size: 13px;
+  background-color: #EAEBED;
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin-right: 8px;
+}
+.popup{
+  padding: 10px;
+}
+.popup image{
+  width: 20px;
+  height: 20px;
+}

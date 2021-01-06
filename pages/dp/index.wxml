@@ -1,0 +1,47 @@
+<!--wxs-->
+<wxs module="m1">
+  var formatNumber = function (n) {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}
+var getTime = function (datetime) {
+  var times = parseInt(datetime);
+  var date = getDate(times);
+  var year = date.getFullYear();
+  var month = date.getMonth() + 1;
+  var day = date.getDate();
+  return [year, month, day].map(formatNumber).join('-');
+}
+module.exports.getTime = getTime;
+</wxs>
+<ty-head bgColor="{{bgColor}}" title="{{title}}"></ty-head>
+<view class="head">
+    <view id="videoIdv">
+      <video id="myVideo" src="{{src}}" controls></video>
+    </view>
+  </view>
+<view  class="content">
+    <view class="videoTitle">
+      <view class="van-multi-ellipsis--l2">
+        <span>{{mv.name}} - {{ars}}</span>
+      </view>
+
+    </view>
+    <view class="videoPlay">
+        <span>{{mv.playCount}}次观看</span>
+      </view>
+    <view class="videoDesc">
+      <span style="display: block;color: black;">发布:{{mv.publishTime}}</span>
+      <span>{{mv.desc}}</span>
+    </view>
+    <strong>热门评论</strong>
+    <view class="videoPl">
+      <view style="margin-top: 10px;">
+        <view wx:for="{{pls}}" style="margin:20px 0px;">
+          <van-image round width="2.5rem" height="2.5rem" src="{{item.user.avatarUrl}}"/>
+          <font >{{item.user.nickname}}:</font>
+          <span>{{item.content}}</span>
+        </view>
+      </view>
+    </view>
+  </view>

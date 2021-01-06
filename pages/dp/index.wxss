@@ -1,0 +1,82 @@
+/* pages/mv/index.wxss */
+.head{
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+}
+.content{
+  padding: 0px 15px;
+  margin-top: 250px;
+  z-index: 1;
+}
+#videoIdv{
+  width: 100%;
+}
+#videoIdv video{
+  width: 100%;
+}
+.videoImg img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.videoTitle {
+  font-family:'Raleway', 'Open Sans', sans-serif;
+  font-synthesis: initial;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.videoPlay{
+  font-family:'Raleway', 'Open Sans', sans-serif;
+  font-synthesis: initial;
+  font-weight: bold;
+  color: rgba(69, 90, 100, 0.6);
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+.videoDesc{
+  font-family:'Raleway', 'Open Sans', sans-serif;
+  font-synthesis: initial;
+  font-weight: bold;
+  color: rgba(69, 90, 100, 0.6);
+  margin-bottom: 5px;
+}
+.videoPl{
+  margin-bottom: 100px;
+}
+.videoPl font {
+  margin-left: 10px;
+  font-size: 0.8rem;
+  position: absolute;
+  font-family:'Raleway', 'Open Sans', sans-serif;
+  font-synthesis: initial;
+  font-weight: bold;
+  color: rgba(69, 90, 100, 0.6);
+}
+.videoPl span {
+  margin-left: 10px;
+  font-size: 12px;
+  font-family:'Raleway', 'Open Sans', sans-serif;
+  font-synthesis: initial;
+  font-weight: bold;
+}
+.van-nav-bar__left, .van-nav-bar__right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 12px;
+    cursor: pointer;
+}
+strong{
+  font-family:'Raleway', 'Open Sans', sans-serif;
+  font-synthesis: initial;
+  font-weight: bold;
+  margin-bottom: 10px;
+}

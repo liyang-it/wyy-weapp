@@ -1,4 +1,4 @@
-<ty-head></ty-head>
+<ty-head bgColor="{{bgColor}}"></ty-head>
 <view class="main">
   <view class="main-img">
     <image src="{{gdImg}}"></image>

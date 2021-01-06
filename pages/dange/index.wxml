@@ -1,3 +1,10 @@
+
+<wxs module="m1">
+var getArs = function (ar) {
+  return ar[0].name;
+}
+module.exports.getArs = getArs;
+</wxs>
 <!-- 左上角胶囊开始-->
 <!--left-capsule 是最上层，可以设置背景-->
 <view class="left-capsule" style="background-image: url({{gdImg}});">
@@ -33,6 +40,7 @@
   </view>
    <!--头部歌单背景结束-->
     <!--歌单 歌曲列表开始-->
+
   <view class="gqList">
     <van-cell   label="{{item.ar[0].name + ' - ' + item.al.name}}" wx:for="{{tracks}}" wx:for-index="index" wx:for-item="item" wx:key="key" bind:tap="startMusic" data-index="{{index}}"  data-text="{{item}}">
       <view slot="title" >
@@ -74,7 +82,7 @@
             </div>
           </view>
         </van-cell>
-        <van-cell >
+        <van-cell bindtap="openPl">
           <view slot="title" >
             <div>
               <image src="../../static/images/pl.png" ></image>
@@ -84,7 +92,7 @@
             </div>
           </view>
         </van-cell>
-        <van-cell >
+        <van-cell bindtap="openGs">
           <view slot="title" >
             <div>
               <image src="../../static/images/gs.png" ></image>
@@ -94,7 +102,7 @@
             </div>
           </view>
         </van-cell>
-        <van-cell >
+        <van-cell bindtap="openMv">
           <view slot="title" >
             <div>
               <image src="../../static/images/mv.png" ></image>
@@ -104,6 +112,31 @@
             </div>
           </view>
         </van-cell>
+      </view>
+    </view>
+  </van-popup>
+  <!-- 多个歌手-->
+  <van-popup show="{{ showGss }}" 
+    round position="bottom" 
+    closeable
+    custom-style="height: 35%" 
+    bind:close="onClose2">
+    <view class="popup">
+      <view>
+        <font style="font-size: 0.8rem;font-weight: 900;color:#2F4F4F;">歌手:</font>
+      </view>
+      <view style="padding: 10px 0px;">
+        <van-cell bindtap="openGs2" wx:for="{{gss}}" data-obj="{{item}}">
+          <view slot="title" >
+            <div>
+              <image src="../../static/images/gs.png" ></image>
+              <font class="van-ellipsis" style="font-size: 1.0rem;font-weight: 900;margin-left: 5px;position:relative;top: -5px;">
+                {{item.name}}
+              </font>
+            </div>
+          </view>
+        </van-cell>
+
       </view>
     </view>
   </van-popup>

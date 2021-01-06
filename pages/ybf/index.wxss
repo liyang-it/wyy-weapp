@@ -1,0 +1,259 @@
+
+/*背景开始 第一 最小层级*/
+
+.bg{
+  width: 100vh;
+  height: 100vh;
+  overflow: hidden;
+  /* 绝对定位不允许滚动*/
+  position: fixed;
+  /* background-color: black; */
+}
+.bg-img{
+  filter: blur(20px);
+  transform: scale(2);
+  height: 100%;
+  width: 100%;
+}
+.bg::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, .5);
+  z-index: 1;
+}
+/*背景结束*/
+/*二级遮罩 第三层级*/
+ .twoBg{
+    width: 100%;
+    z-index: 4;
+    position: fixed;
+    overflow: hidden;
+    transition: all 0.2s linear;
+
+}
+.twoBg-img{
+  filter: blur(2px);
+  transform: scale(1);
+  height: 100%;
+  width:100%;
+} 
+.twoBg::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(29, 21, 21, 0.5);
+  z-index: 5;
+} 
+
+/* .ars{
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 50%;
+  color: white;
+  text-align: center;
+  font-size: 12px;
+} */
+/*二级遮罩*/
+/* 导航栏css开始*/
+.left-capsule{
+
+}
+/* 左上角胶囊 最大层级*/
+.title{
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 50%;
+  color: white;
+  text-align: center;
+} 
+.left-capsule .left-capsule-nav{
+  width: 100%;
+  position: fixed;
+  z-index: 6;
+  top: 0px;
+}
+.left-capsule-nav .left-capsule-nav-content{
+  width: 85px;
+  text-align: center;
+  border-radius: 50px;
+  position: relative;
+  top: 26px;
+  left: 20px;
+  box-shadow:0px 0px 1px 0.2px white;
+  background-color: #1d19195c;
+  height: 30px;
+}
+.left-capsule-nav-content view{
+  display: inline;
+  width: 35px;
+  position: relative;
+}
+.left-capsule-nav-content .back{
+  top: 4px;left: -5px;
+}
+.left-capsule-nav-content .line{
+    top: 3px;
+    width: 1px;
+    border-left: solid #cac3c3 thin;
+    height: 17px;
+    display: inline-block;
+}
+.left-capsule-nav-content .home{
+  top: 4px;
+}
+
+/* 第二层级*/
+/* 导航栏css结束*/
+.main-content{
+  position: absolute;
+  width: 95%;
+  z-index: 2;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+}
+.main-content .cover{
+  width: 320px;
+  height: 240px;
+  margin: auto;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.main-content .desc{
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  margin-top: 20px;
+  color: white;
+}
+.desc-x text{
+  font-size: 12px;
+}
+.desc-x span{
+  margin-left: 10px;
+}
+.desc view{
+  padding: 10px 0px;
+}
+.main-content .play{
+  margin-top: 20px;
+  text-align: center;
+}
+.play image{
+  width: 30px;
+  height: 30px;
+  transition: all 0.5s linear;
+}
+.play view{
+  padding: 0px 30px;
+  display: inline;
+}
+.play view:active image{
+  transform: scale(1.5);
+}
+.play view:hover image{
+  transform: scale(1.5);
+}
+.main-content .btn{
+  width: 150px;
+  box-shadow: 0px 0px 1px 0.3px white;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 30px;
+  color: white;
+  text-align: center;
+  margin: auto;
+  margin-top: 20px;
+
+}
+
+.btn text{
+
+  position: relative;
+  top: 3px;
+}
+.pl{
+  padding: 10px;
+  color: white;
+  overflow:hidden
+}
+.pl .pl-title{
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.loadText{
+  position: absolute;
+  width: 300px;
+  z-index: 2;
+  height: 300px;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+}
+.loadText image{
+
+  width: 100%;
+  height: 100%;
+}
+/* 评论*/
+.pl .pl-content{
+  padding: 10px;
+}
+.pl-content-img{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.pl-content-img image{
+  width: 100%;
+  height: 100%;
+}
+.pl-content-title-name{
+  left: 50px;
+  top: -40px;
+  font-size: 15px;
+  color: #E6E6E6;
+  position: relative;
+}
+.pl-content-title-time{
+  position: relative;
+  left: 50px;
+  top: -40px;
+  font-size: 12px;
+  color: #C4C4C4;
+}
+.pl-content-count{
+  position: relative;
+  text-align: right;
+  top: -75px;
+  font-size: 13px;
+  color: #E6E6E6;
+}
+.pl-content-count image{
+  width: 18px;
+  height: 18px;
+  margin-left: 3px;
+}
+.pl-content-text{
+  position: relative;
+  left: 50px;
+  width: 80%;
+  top: -55px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+

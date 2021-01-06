@@ -38,7 +38,7 @@
     "bundle": false
   },
   "compileType": "node_modules",
-  "libVersion": "2.12.1",
+  "libVersion": "2.14.1",
   "appid": "wxc52ed9c139f62313",
   "projectname": "minApp1",
   "debugOptions": {

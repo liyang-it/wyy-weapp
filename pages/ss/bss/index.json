@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "ty-head": "../../../components/tyHead/index",
+    "card":"../../../components/card/index"
+  }
+}

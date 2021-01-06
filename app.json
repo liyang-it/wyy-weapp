@@ -2,8 +2,13 @@
   "pages": [
     "pages/found/index",
     "pages/about/index",
-    "pages/play/index",
-    "pages/gedanT/index"
+    "pages/ybf/index",
+    "pages/nh/index",
+    "pages/lp/index",
+    "pages/dp/index",
+    "pages/sg/index",
+    "pages/ss/sos/index",
+    "pages/ss/bss/index"
   ],
   "requiredBackgroundModes": [
     "audio",

@@ -40,7 +40,7 @@ module.exports.getTime = getTime;
       <!-- home 胶囊 返回首页按钮-->
       <view class="home" bindtap="backHome"><van-icon name="wap-home-o" color="white" size="20"/></view> 
     </view>
-    <view class="title" style="top:{{capsuleTop}}px;">正在播放</view>
+    <view class="title" style="top:{{capsuleTop}}px;"></view>
     <!-- <view class="ars" style="">{{ars}}</view> -->
   </view>
   <!-- 以上 可以 封装成自定义组件,在引入，这个地方是 胶囊外的内容-->
@@ -67,7 +67,7 @@ module.exports.getTime = getTime;
     <text bindtap="copyLink">下载</text>
   </view>
   <view class="pl">
-    <view class="pl-title">精彩评论</view>
+    <view class="pl-title">热门评论</view>
     <view class="pl-content">
       <view wx:for="{{pls}}" wx:key="key" wx:for-item="item" wx:for-index="index">
         <view class="pl-content-img" ><image src="{{item.user.avatarUrl}}"></image></view>

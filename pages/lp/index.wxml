@@ -1,0 +1,29 @@
+
+<!--wxs-->
+<wxs module="m1">
+  var formatNumber = function (n) {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}
+var getTime = function (datetime) {
+  var times = parseInt(datetime);
+  var date = getDate(times);
+  var year = date.getFullYear();
+  var month = date.getMonth() + 1;
+  var day = date.getDate();
+  return [year, month, day].map(formatNumber).join('-');
+}
+module.exports.getTime = getTime;
+</wxs>
+<ty-head bgColor="{{bgColor}}" title="{{title}}"></ty-head>
+<view class="pl">
+    <view class="pl-content">
+      <view wx:for="{{pls}}" wx:key="key" wx:for-item="item" wx:for-index="index">
+        <view class="pl-content-img" ><image src="{{item.user.avatarUrl}}"></image></view>
+        <view class="pl-content-title-name">{{item.user.nickname}}</view>
+        <view class="pl-content-title-time"> {{m1.getTime(item.time)}} </view>
+        <view class="pl-content-count">{{item.likedCount}}<image src="../../static/dz.png"></image></view>
+        <view class="pl-content-text">{{item.content}} </view>
+      </view>
+    </view>
+  </view>

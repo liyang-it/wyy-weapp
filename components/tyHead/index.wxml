@@ -2,7 +2,7 @@
 <!--left-capsule 是最上层，可以设置背景-->
 <view class="left-capsule" style="height:{{navHeight}}px;">
   <!--left-capsule-nav 是用于定位左上角的位置-->
-  <view class="left-capsule-nav" style="height:{{navHeight}}px;">
+  <view class="left-capsule-nav" style="height:{{navHeight}}px;background-color: {{bgColor}} ;">
     <!--left-capsule-nav-content 是 胶囊主要内容-->
     <view style="position:relative;top:{{capsuleTop}}px;" class="left-capsule-nav-content"> 
       <!--back 胶囊 返回按钮-->
@@ -12,6 +12,7 @@
       <!-- home 胶囊 返回首页按钮-->
       <view class="home" bindtap="backHome"><van-icon name="wap-home-o" color="white" size="20"/></view> 
     </view>
+    <view class="left-capsule-nav-title" style="top:{{capsuleTop}}px;">{{title}}</view>
   </view>
   </view>
 

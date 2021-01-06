@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "ty-head":"../../components/tyHead/index"
+  }
+}

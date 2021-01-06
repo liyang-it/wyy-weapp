@@ -1,0 +1,81 @@
+<ty-head bgColor="{{bgColor}}" title="{{title}}"></ty-head>
+<view class="main">
+  <view class="main-head">
+    <image src="{{gs.artist.cover}}"></image>
+  </view>
+  <view class="main-content">
+    <van-tabs sticky animated swipeable type="card">
+      <van-tab title="主页">
+        <view class="main-content-desc">
+           <strong>歌手简介</strong>
+           <p>{{gs.artist.briefDesc}}</p>
+        </view>
+      </van-tab>
+      <van-tab title="热门歌曲">
+        <!--歌单 歌曲列表开始-->
+          <van-cell   label="{{item.ar[0].name + ' - ' + item.al.name}}" wx:for="{{musics}}" wx:for-index="index" wx:for-item="item" wx:key="key" bind:tap="startMusic"  data-index="{{index}}"  data-text="{{item}}">
+            <view slot="title" >
+              <div>
+                <font style="color: tan;font-size: 1rem;">{{index + 1}}</font>
+                <font class="van-ellipsis" style="margin-left: 10px;font-size: 1.0rem;" id="gqTitle">{{item.name}}</font>
+              </div>
+            </view>
+            <view slot="right-icon"  data-text="{{item}}" catchtap="showXqView">
+              <image src="../../static/images/xq-icon.png" 
+                style="background-color: white;position: absolute;right: 14px;width: 30px;height: 30px;">
+              </image>
+            </view>
+          </van-cell>
+  <!--歌单 歌曲列表结束-->
+    <!--点击 歌曲详情 弹出层-->
+    <van-popup show="{{ showXq }}" 
+    round position="bottom" 
+    custom-style="height: 38%" 
+    bind:close="onClose">
+    <view class="popup">
+      <view>
+        <font style="font-size: 0.8rem;font-weight: 900;color:#2F4F4F;">歌曲:</font>
+        <font class="van-ellipsis" style="font-size: 1.0rem;font-weight: 900;margin-left: 10px;">{{music.name}}</font>
+        <font style="font-size: 0.8rem;font-weight: 900;color:#2F4F4F;margin-left: 5px;">歌手:</font>
+        <font class="van-ellipsis" style="font-size: 1.0rem;font-weight: 900;margin-left: 10px;">
+          <text wx:for="{{music.ar}}" wx:for-index="index2" wx:for-item="item2" wx:key="key2">{{item2.name}}   </text>
+        </font>
+      </view>
+      <view style="padding: 10px 0px;">
+        <van-cell bindtap="copyLink">
+          <view slot="title" >
+            <div>
+              <image src="../../static/images/xz.png" ></image>
+              <font class="van-ellipsis" style="font-size: 1.0rem;font-weight: 900;margin-left: 5px;position:relative;top: -5px;">
+                下载
+              </font>
+            </div>
+          </view>
+        </van-cell>
+        <van-cell bindtap="openPl">
+          <view slot="title" >
+            <div>
+              <image src="../../static/images/pl.png" ></image>
+              <font class="van-ellipsis" style="font-size: 1.0rem;font-weight: 900;margin-left: 5px;position:relative;top: -5px;">
+                评论
+              </font>
+            </div>
+          </view>
+        </van-cell>
+        <van-cell bindtap="openMv">
+          <view slot="title" >
+            <div>
+              <image src="../../static/images/mv.png" ></image>
+              <font class="van-ellipsis" style="font-size: 1.0rem;font-weight: 900;margin-left: 5px;position:relative;top: -5px;">
+                MV
+              </font>
+            </div>
+          </view>
+        </van-cell>
+      </view>
+    </view>
+  </van-popup>
+      </van-tab>
+    </van-tabs>
+  </view>
+</view>

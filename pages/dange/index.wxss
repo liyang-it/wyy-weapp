@@ -1,0 +1,129 @@
+
+/* 导航栏css开始*/
+.left-capsule{
+  /*100vm 相当于 屏幕多大 就多大*/
+  width: 100%;
+  height: 100vh;
+  
+}
+.left-capsule .left-capsule-nav{
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+}
+.left-capsule-nav .left-capsule-nav-content{
+  width: 85px;
+  text-align: center;
+  border-radius: 50px;
+  position: relative;
+  top: 26px;
+  left: 20px;
+  box-shadow:0px 0px 1px 0.2px white;
+  background-color: #1d19195c;
+  height: 30px;
+}
+.left-capsule-nav-content view{
+  display: inline;
+  width: 35px;
+  position: relative;
+}
+.left-capsule-nav-content .back{
+  top: 4px;left: -5px;
+}
+.left-capsule-nav-content .line{
+    top: 3px;
+    width: 1px;
+    border-left: solid #cac3c3 thin;
+    height: 17px;
+    display: inline-block;
+}
+.left-capsule-nav-content .home{
+  top: 4px;
+}
+
+
+/* 导航栏css结束*/
+.main-content{
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+.gd{
+  /* z-index: 2; */
+  position: relative;
+}
+.bgImg{
+  width: 100%;
+  height: 220px;
+}
+.bgImg image{
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  filter: blur(20px);
+}
+.head{
+  position: relative;
+  top: -180px;
+  width: 90%;
+  margin: 0 auto;
+  right: 0;
+  left: 0;
+}
+.head .head-slt{
+  width: 110px;
+  height: 110px;
+  float: left;
+}
+.head  .head-slt image{
+  width: 100%;
+  height: 100%;
+}
+.head .head-content{
+  margin-left: 120px;
+  width: 60%;
+  word-break:normal;
+  display:block;
+  word-wrap:break-word;
+  height: 110px;
+}
+.head .head-content span{
+  font-size: 1rem;
+  font-family:'Raleway', 'Open Sans', sans-serif;
+  font-synthesis: initial;
+  font-weight: bold;
+  color: white;
+  width:100%;
+  position: relative;
+  top: 10px;
+}
+.head .head-content p{  font-size: 0.8rem;
+  font-family:'Raleway', 'Open Sans', sans-serif;
+  font-synthesis: initial;
+  font-weight: bold;
+  color: rgb(204, 196, 196);
+  width:100%;
+  margin-top: 70px;
+  overflow: hidden;  
+  display: -webkit-box;  
+  -webkit-line-clamp: 2;
+  -webkit-box-orient:vertical;
+  text-decoration:underline;
+  position: relative;
+  top: -25px;
+}
+.gqList{
+  border-radius: 13px;
+  overflow: auto;
+  background-color: white;
+  position: absolute;
+  top: 180px;
+  width: 100%;
+}
+.popup{
+  padding: 10px;
+}
+.popup image{
+  width: 20px;
+  height: 20px;
+}

@@ -16,7 +16,9 @@ var t = Page({
     showXq: false,
     music: {},
     height:0,
-    top: 0
+    top: 0,
+    showGss: false,
+    gss:[]
   },
   backPage:function(){
     
@@ -29,7 +31,6 @@ var t = Page({
   showXqView: function(item){
    this.setData({showXq: true,music: item.currentTarget.dataset.text})
   },
-  // 下载 复制音乐链接
   copyLink:function(){
     let t = this
     wx.showModal({
@@ -67,10 +68,11 @@ var t = Page({
   onClose: function(){
     this.setData({showXq: false})
   },
+  onClose2:function(){
+    this.setData({showGss: false})
+  },
   startMusic: function(item){
-    // 将当前播放的音乐下标赋值给全局变量
     app.startMusicIndex = item.currentTarget.dataset.index
-    // 获取音乐对象值 进行传递
     let id = item.currentTarget.dataset.text.id
     let name = item.currentTarget.dataset.text.name
     let alPicUrl = item.currentTarget.dataset.text.al.picUrl
@@ -78,8 +80,43 @@ var t = Page({
     let al = item.currentTarget.dataset.text.al.name
     let urls = ''+id+'&'+name+'&'+alPicUrl+'&'+ars+'&'+al
     wx.navigateTo({
-      url: '/pages/play/index?url=' + encodeURIComponent(urls),
+      url: '/pages/ybf/index?url=' + encodeURIComponent(urls),
     })
+  },
+  openPl: function(){
+    wx.navigateTo({
+      url: '/pages/lp/index?id='+ this.data.music.id+'&name='+this.data.music.name,
+    })
+  },
+  openGs: function(){
+    this.setData({showGss:true,gss:this.data.music.ar})
+  },
+  openGs2:function(item){
+    wx.navigateTo({
+      url: '/pages/sg/index?id='+item.currentTarget.dataset.obj.id+'&name='+item.currentTarget.dataset.obj.name,
+    })
+  },
+  openMv: function(){
+    if(this.data.music.mv == 0){
+      wx.showToast({
+        title: '该歌曲无相关MV',
+        icon:'error',
+        duration: 3000
+      })
+      return
+    }
+    let ars = this.getArs(this.data.music.ar)
+    wx.navigateTo({
+      url: '/pages/dp/index?id='+ this.data.music.mv+'&name='+this.data.music.name+'&ars='+ars,
+    })
+  },
+  getArs:function(ars){
+    let str = ''
+    ars.forEach(element => {
+      str += element.name + '、'
+    });
+    str = str.substring(0,str.length - 1)
+    return str
   },
   /**
    * 生命周期函数--监听页面加载

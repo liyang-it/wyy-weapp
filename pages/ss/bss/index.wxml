@@ -1,0 +1,6 @@
+<view class="main">
+  <ty-head></ty-head>
+  <card></card>
+</view>
+
+

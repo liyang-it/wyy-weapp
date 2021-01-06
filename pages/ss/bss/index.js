@@ -1,49 +1,25 @@
-// pages/gedanT/index.js
-let sendUrl = require('../../utils/sendUrl.js')
+// pages/ss/bss/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    gdImg: '',
-    gdBgImg: '',
-    gdName:'',
-    gdDesc: ''
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.showLoading({
-      title: '加载中...',
-      mask: true
-    })
-    let getGdUrl = sendUrl.baseUrl + 'playlist/detail?id=' + options.id
-    wx.request({
-      url: getGdUrl,
-      method: 'GET',
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success:(res)=>{
-        this.setData({
-            gdImg:res.data.playlist.coverImgUrl,
-            gdBgImg: res.data.playlist.tracks[0].al.picUrl,
-            gdName : res.data.playlist.name,
-            gdDesc : res.data.playlist.description
-          })
-          wx.hideLoading()
-      }
-    })
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
- 
+
   },
 
   /**

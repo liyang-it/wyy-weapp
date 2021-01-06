@@ -1,0 +1,24 @@
+/* pages/gs/index.wxss */
+.main-head image{
+  width: 100%;
+}
+.main-content-desc{
+  padding: 5px 10px;
+}
+.main-content-desc strong{
+  font-size: 1.0rem;
+  display: block;
+  margin-bottom: 10px;
+}
+.main-content-desc p{
+  font-size: 15px;
+  font-family: fantasy;
+  color:rgba(19, 17, 17, 0.466);
+}
+.popup{
+  padding: 10px;
+}
+.popup image{
+  width: 20px;
+  height: 20px;
+}

@@ -1,0 +1,21 @@
+<view id='card'>
+  <view class="left-card">
+    <view class="left-card-img">
+      <image src="http://www.file.liyangit.top/liyangit/portrait.jpg" alt=""></image>
+    </view>
+    <view class="left-card-content">
+      <view class="left-card-content-title">
+        <p>爱吃小熊饼干</p>
+      </view>
+      <view class="left-card-content-desc">
+        <view>绝大部分时间都处于咸鱼
+          <image style="position: relative;width: 30px;height: 30px;top: 4px;" src="http://www.file.liyangit.top/liyangit/xy.png">
+          </image>
+          状态
+        </view>
+        <view>爱好  健身,编程,打游戏</view>
+        <view>最爱:  辣椒炒肉、豆角茄子</view>
+      </view>
+    </view>
+  </view>
+</view>

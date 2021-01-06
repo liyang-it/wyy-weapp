@@ -1,0 +1,108 @@
+.left-card{
+  margin-left: 0px;
+  margin-top: -50px;
+  width: 300px;
+  margin: auto;
+}
+.left-card-img{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  top: 35px;
+  margin: 0 auto;
+  z-index: 3;
+}
+.left-card-img image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.left-card-content{
+  z-index: 4;
+  width: 300px;
+  height: 22rem;
+  background-color:white;
+  border-radius: 10px;
+  transition: 0.3s transform;
+  -webkit-transition:  0.3s transform;
+}
+.left-card-content .left-card-content-title{
+  width: 230px;
+  margin: 0 auto;
+  top: 55px;
+  position: relative;
+  text-align: center;
+}
+.left-card-content .left-card-content-title p{
+  font-size: 1.2rem;
+  font-family: "SF Pro SC","SF Pro Text","SF Pro Icons","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
+  font-weight: bold;
+  border-right: 1px solid black;
+  animation: typing 2s steps(20, end), blink-caret .3s step-end infinite alternate;
+  transition: all 0.3s linear;
+  -webkit-transition: all 0.3s linear;
+}
+.left-card-content-desc{
+      width: 95%;
+      margin: 0 auto;
+      top: 40px;
+      position: relative;
+      text-align: center;
+    }
+.left-card-content-desc view{
+      font-size: 1.05rem;
+      font-family: "SF Pro SC","SF Pro Text","SF Pro Icons","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
+      transition: all 0.5s linear;
+      -webkit-transition: all 0.5s linear;
+      margin-top: 15px;
+
+}
+.left-card-content-btn{
+      opacity: 0;
+      transition: all 0.5s linear;
+      -webkit-transition: all 0.5s linear;
+      top: 65px;
+      position: relative;
+      width: 90%;
+      margin: auto;
+      text-align: center;
+
+}
+.left-card-content-btn div{
+  border: none;
+  background-color: white;
+  font-size: 1.2rem;
+  height: 30px;
+  width: 70px;
+  cursor: pointer;
+  float: left;
+  margin-left: 45px;
+}
+.left-card-content-btn div:hover{
+  color:rgb(56, 166, 240);
+  text-decoration: underline;
+  font-weight: bold;
+  border-bottom: 1px solid rgb(56, 166, 240);
+}
+  hr{
+    position: relative;
+    top: 50px;
+    width: 90%;
+    background-image: linear-gradient(to left, #3498db, #2980b9);
+    height: 1.5px;
+  }
+@keyframes typing {
+    from {
+        width: 0;
+    }
+}
+@keyframes blink-caret {
+    50% {
+        border-color: transparent;
+    }
+}
+.left-card-content:hover{
+  transform: scale(1.1);
+}

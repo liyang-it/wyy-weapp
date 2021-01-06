@@ -6,7 +6,6 @@ App({
     let height_ = (
       20 + dwObj.height + dwObj.top
     )
-    console.info(dwObj)
     this.appHead.navHeight = height_
     this.appHead.capsuleTop = dwObj.top
     
@@ -50,7 +49,9 @@ App({
     isStart:false,
     startMusicId: '',
     music:{},
-    musicId: ''
+    musicId: '',
+    isStop: false,
+    music2:{}
   },
   pls: [],
   musics:[], // 歌单音乐集合

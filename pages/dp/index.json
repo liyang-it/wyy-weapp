@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "ty-head":"../../components/tyHead/index",
+    "van-image": "@vant/weapp/image/index"
+  }
+}

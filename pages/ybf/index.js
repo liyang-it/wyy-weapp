@@ -29,6 +29,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
       let t = this
       // 得到 全局背景音乐实例
       let backgroundAudioManager = wx.getBackgroundAudioManager()
@@ -37,12 +38,12 @@ Page({
       let ars = JSON.parse(strs[3])
       let arsJoin = ''
       ars.forEach(element => {
-        arsJoin += element.name+'/'
+        arsJoin += element.name+'、'
       });
       arsJoin = arsJoin.substring(0,arsJoin.length -1)
       t.setData({id:strs[0],name:strs[1],alPicUrl:strs[2],ars:arsJoin,al:strs[4]})
       let url = sendUrl.baseUrl + 'song/url?id=' + t.data.id
-      if(app.musicObj.isStart == false || app.musicObj.musicId != t.data.id){
+      // if(app.musicObj.isStart == false || app.musicObj.musicId != t.data.id){
       wx.request({
         url: url,
         method:'GET',
@@ -53,6 +54,8 @@ Page({
               theme: 'round-button',
             }).then(() => {
               // on close
+              wx.navigateBack()
+              console.info('确定，资源获取失败')
             });
           }else{
             // 播放
@@ -74,6 +77,10 @@ Page({
             app.musicObj.music.onCanplay(()=>{
               app.musicObj.isStart = true
               t.setData({isPlay: true})
+            })
+            app.musicObj.music.onStop(()=>{
+              t.setData({isPlay: false})
+              app.musicObj.isStop = true
             })
             // 音乐自然结束播放后 自动下一首
             app.musicObj.music.onEnded(()=>{
@@ -97,7 +104,6 @@ Page({
       wx.request({
         url: plUrl,
         success: function(res){
-          console.info('评论:',res.data.hotComments)
           app.pls = res.data.hotComments
           t.setData({pls: res.data.hotComments})
         }
@@ -121,10 +127,10 @@ Page({
           
       //   }
       // })
-    }else{
-      // 如果音乐已经在播放 不刷新音乐 继续播放
-      t.setData({showMusic: false,isPlay: true,pls: app.pls})
-    }
+    // }else{
+    //   // 如果音乐已经在播放 不刷新音乐 继续播放
+    //   t.setData({showMusic: false,isPlay: true,pls: app.pls})
+    // }
 
   },
   backPage:function(){
@@ -158,7 +164,12 @@ Page({
           Dialog.alert({
             message: '错误！资源获取失败',
             theme: 'round-button',
-          }).then(() => {});
+          }).then(() => {
+            // 返回
+           console.info('确定')
+           wx.navigateBack()
+          });
+          
         }else{
           // 播放
           t.setData({src:res.data.data[0].url})
@@ -199,7 +210,6 @@ Page({
           wx.request({
             url: plUrl,
             success: function(res){
-              console.info('评论:',res.data.hotComments)
               app.pls = res.data.hotComments
               t.setData({pls: res.data.hotComments})
             }
@@ -226,10 +236,29 @@ Page({
     this.setMusic(app.musics[rightIndex],t)
   },
   playMusic: function(){
+     // 音乐是否停止
+    let isStop = app.musicObj.isStop
     // 音乐是否正在播放
     let isStart = app.musicObj.isStart
+    
     let backAudio = app.musicObj.music
-    if(isStart == true){
+    if(isStop == true){
+          app.musicObj.isStop = false
+          this.setData({isPlay: true})
+          // 设置 音乐src
+          app.musicObj.music.src = this.data.src
+          // 设置 音乐名称
+          app.musicObj.music.title = this.data.name
+          // 设置 封面图 URL
+          app.musicObj.music.coverImgUrl = this.data.alPicUrl
+          // 设置专辑名称
+          app.musicObj.music.epname = this.data.al
+          //设置 歌手名
+          app.musicObj.music.singer = this.data.ars
+          app.musicObj.musicId = this.data.id
+          app.musicObj.music.play()
+          
+    }else if(isStart == true){
       backAudio.pause()
       this.setData({isPlay: false})
       app.musicObj.isStart = false

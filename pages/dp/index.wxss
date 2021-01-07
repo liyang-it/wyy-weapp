@@ -1,4 +1,5 @@
 /* pages/mv/index.wxss */
+@import '../../wxParse/wxParse.wxss';
 .head{
   position: fixed;
   width: 100%;

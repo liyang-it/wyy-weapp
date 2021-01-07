@@ -17,7 +17,8 @@ module.exports.getTime = getTime;
 <ty-head bgColor="{{bgColor}}" title="{{title}}"></ty-head>
 <view class="head">
     <view id="videoIdv">
-      <video id="myVideo" src="{{src}}" controls></video>
+      <import src="../../wxParse/wxParse.wxml"/>
+      <template is="wxParse" data="{{wxParseData:vHtml.nodes}}"/>
     </view>
   </view>
 <view  class="content">
@@ -28,13 +29,14 @@ module.exports.getTime = getTime;
 
     </view>
     <view class="videoPlay">
-        <span>{{mv.playCount}}次观看</span>
+        <span>{{mv.playCount}}{{text1}}</span>
+        
       </view>
     <view class="videoDesc">
-      <span style="display: block;color: black;">发布:{{mv.publishTime}}</span>
+      <span style="display: block;color: black;">{{text2}}{{mv.publishTime}}</span>
       <span>{{mv.desc}}</span>
     </view>
-    <strong>热门评论</strong>
+    <strong>{{text3}}</strong>
     <view class="videoPl">
       <view style="margin-top: 10px;">
         <view wx:for="{{pls}}" style="margin:20px 0px;">

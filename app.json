@@ -1,11 +1,11 @@
 {
   "pages": [
     "pages/found/index",
+    "pages/dp/index",
     "pages/about/index",
     "pages/ybf/index",
     "pages/nh/index",
     "pages/lp/index",
-    "pages/dp/index",
     "pages/sg/index",
     "pages/ss/sos/index",
     "pages/ss/bss/index"

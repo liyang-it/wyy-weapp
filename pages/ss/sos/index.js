@@ -29,7 +29,7 @@ Page({
     if(this.data.value.length == 0){
       return
     }
-    this.getResult(this.data.value,0,this.data.limit)
+    this.getResult(this.data.value,this.data.limit)
     this.addSearchs(this.data.value,this)
   },
   onSearch:function(e){
@@ -37,7 +37,7 @@ Page({
     if(e.detail.length == 0){
       return
     }
-    this.getResult(e.detail,0,this.data.limit)
+    this.getResult(e.detail,this.data.limit)
     this.addSearchs(e.detail,this)
   },
   onChange:function(e){
@@ -61,7 +61,7 @@ Page({
   openResult:function(e){
     let value = e.currentTarget.dataset.text
     this.addSearchs(value,this)
-    this.getResult(value,0,this.data.limit)
+    this.getResult(value,this.data.limit)
   },
   addSearchs:(v,t)=>{
     let searchs = []
@@ -76,20 +76,20 @@ Page({
         wx.setStorageSync('his_search', JSON.stringify(searchs))
       }
     }
-    t.setData({his_search:searchs,show_his_search:true})
+    t.setData({his_search:searchs.reverse(),show_his_search:true})
   },
-  getResult:function(v,page,limit){
+  getResult:function(v,limit){
     wx.showLoading({
       title: '加载中...',
     })
     let t = this
-    let url = sendUrl.baseUrl + 'search?keywords='+v+'&type=1&offset='+page+'&limit='+limit
+    let url = sendUrl.baseUrl + 'search?keywords='+v+'&type=1&offset=0&limit='+limit
     t.setData({showHot: false,showSearch: false,value: v,showResult:true})
     wx.request({
       url: url,
       success:function(res){
         if(res.data.result.songs != undefined){
-          t.setData({results: t.data.results.concat(res.data.result.songs),resultCount:res.data.result.songCount})
+          t.setData({results: res.data.result.songs,resultCount:res.data.result.songCount})
         }
         wx.hideLoading()
       }
@@ -200,16 +200,33 @@ Page({
     let t = this
     let page = t.data.page + 1
     t.setData({page: page})
-    t.getResult(t.data.value,((page - 1) * t.data.limit),t.data.limit)
+    wx.showLoading({
+      title: '加载中...',
+    })
+    let url = sendUrl.baseUrl + 'search?keywords='+t.data.value+'&type=1&offset='+((page - 1) * t.data.limit)+'&limit='+t.data.limit
+    t.setData({showHot: false,showSearch: false,value: t.data.value,showResult:true})
+    wx.request({
+      url: url,
+      success:function(res){
+        if(res.data.result.songs != undefined){
+          t.setData({results: t.data.results.concat(res.data.result.songs),resultCount:res.data.result.songCount})
+        }
+        wx.hideLoading()
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     let t = this
+
+    if(wx.getStorageSync('his_search') == null || wx.getStorageSync('his_search') == ''){
+      return
+    }
     let searchs = JSON.parse(wx.getStorageSync('his_search'))
     if(searchs.length >=1){
-      t.setData({show_his_search:true,his_search : searchs})
+      t.setData({show_his_search:true,his_search : searchs.reverse()})
     }else{
       t.setData({show_his_search:false})
     }

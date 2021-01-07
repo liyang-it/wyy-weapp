@@ -1,5 +1,6 @@
 // pages/mv/index.js
 let sendUrl = require('../../utils/sendUrl.js')
+let wxParse = require('../../wxParse/wxParse.js')
 Page({
 
   /**
@@ -11,7 +12,11 @@ Page({
     pls: [],
     mv: {},
     src: '',
-    ars: ''
+    ars: '',
+    text1: '',
+    text2: '',
+    text3:'',
+    vHtml: ''
 
   },
 
@@ -23,6 +28,7 @@ Page({
       title: '加载中...',
     })
     let t = this
+    
     t.setData({id:options.id,title:options.name,ars: options.ars})
     let getMv = sendUrl.baseUrl + 'mv/detail?mvid='+options.id
     let getMvSrc = sendUrl.baseUrl + 'mv/url?id='+options.id
@@ -34,9 +40,14 @@ Page({
         wx.request({
           url: getMvSrc,
           success:function(res2){
-            t.setData({src:res2.data.data.url })
-            wx.createVideoContext('myVideo').play()
-            wx.hideLoading()
+            t.setData({src:res2.data.data.url,text1: '次观看',text2: '发布:',text3:'热门评论' })
+            t.setData({vHtml:'<video id="myVideo" src="'+res2.data.data.url+'" controls></video>'})
+            wxParse.wxParse('vHtml', 'html', t.data.vHtml, t, 5);
+            setTimeout(()=>{
+              wx.createVideoContext('myVideo').play()
+              wx.hideLoading()
+            },1000)
+
           }
         })
       }

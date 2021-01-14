@@ -89,6 +89,8 @@ Page({
       url: url,
       success:function(res){
         if(res.data.result.songs != undefined){
+          console.info(res.data.result.songs)
+          app.musics = res.data.result.songs
           t.setData({results: res.data.result.songs,resultCount:res.data.result.songCount})
         }
         wx.hideLoading()
@@ -97,7 +99,6 @@ Page({
   },
   startMusic: function(item){
     // 将当前播放的音乐下标赋值给全局变量
-    console.info(item.currentTarget.dataset.text)
     app.startMusicIndex = item.currentTarget.dataset.index
     wx.request({
       url: sendUrl.baseUrl+'song/detail?ids='+item.currentTarget.dataset.text.id,
@@ -209,6 +210,7 @@ Page({
       url: url,
       success:function(res){
         if(res.data.result.songs != undefined){
+          app.musics = app.musics.concat(res.data.result.songs)
           t.setData({results: t.data.results.concat(res.data.result.songs),resultCount:res.data.result.songCount})
         }
         wx.hideLoading()

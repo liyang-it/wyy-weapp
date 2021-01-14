@@ -145,6 +145,7 @@ var t = Page({
             tracks:   res.data.playlist.tracks,
           })
           app.musics = res.data.playlist.tracks
+          console.info(app.musics)
           wx.hideLoading()
         
       }

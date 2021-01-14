@@ -1,0 +1,15 @@
+<view class="main">
+  <about-head height="{{height}}" bgColor="{{bgColor}}"></about-head>
+  <view style="margin-top: {{height}}px;position: relative;">
+    <view class="login">
+      <van-sidebar active-key="{{ activeKey }}">
+        <van-sidebar-item title="手机号登录" ></van-sidebar-item>
+        <van-sidebar-item title="网易云邮箱登录" />
+      </van-sidebar>
+      <view style="position: fixed;left: 70px;top: {{height + 20}}px;">
+        asdasdasd
+      </view>
+    </view>
+  </view>
+</view>
+

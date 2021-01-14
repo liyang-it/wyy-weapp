@@ -52,7 +52,7 @@ module.exports.getArs = getArs;
       <view slot="right-icon" catchtap="showXqView" data-text="{{item}}">
         <!-- <van-icon name="play-circle-o" class="more" size="25"  style="background-color: white;position: absolute;right: 18px;"/> -->
         <image src="../../static/images/xq-icon.png" 
-        style="background-color: white;position: absolute;right: 14px;width: 30px;height: 30px;"></image>
+        style="background-color: white;position: absolute;right: 14px;width: 30px;height: 30px;top: 18px;"></image>
     </view>
     </van-cell>
   </view>

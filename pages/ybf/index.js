@@ -144,17 +144,40 @@ Page({
   setMusic: function(music,t){
     t.setData({showMusic: true})
     let arsJoin = ''
-    music.ar.forEach(element => {
-      arsJoin += element.name+'/'
-    })
-    arsJoin = arsJoin.substring(0,arsJoin.length -1)
-    t.setData({
-        id:music.id,
-        name:music.name,
-        alPicUrl:music.al.picUrl,
-        ars:arsJoin,
-        al:music.al.name
+    try {
+      music.ar.forEach(element => {
+        arsJoin += element.name+'/'
       })
+      arsJoin = arsJoin.substring(0,arsJoin.length -1)
+      t.setData({
+          id:music.id,
+          name:music.name,
+          alPicUrl:music.al.picUrl,
+          ars:arsJoin,
+          al:music.al.name
+        })
+    } catch (error) {
+      // 搜索界面 的音乐对象 没有 ar属性 有 artists
+      wx.request({
+        url: sendUrl.baseUrl+'album?id=' + music.album.id,
+        success:(res)=>{
+
+          music.al = res.data.songs[0].al
+          for(let i = 0;i<music.artists.length;i++){
+            arsJoin += music.artists[i].name+'/'
+          }
+          arsJoin = arsJoin.substring(0,arsJoin.length -1)
+          t.setData({
+            id:music.id,
+            name:music.name,
+            alPicUrl:res.data.songs[0].al.picUrl,
+            ars:arsJoin,
+            al:res.data.songs[0].al.name
+          })
+        }
+      })
+    }
+
     let url = sendUrl.baseUrl + 'song/url?id=' + t.data.id
     wx.request({
       url: url,
@@ -177,10 +200,19 @@ Page({
           app.musicObj.music.src = res.data.data[0].url
           // 设置 音乐名称
           app.musicObj.music.title = music.name
+          
           // 设置 封面图 URL
-          app.musicObj.music.coverImgUrl = music.al.picUrl
+          try {
+            app.musicObj.music.coverImgUrl = music.al.picUrl
+            app.musicObj.music.epname = music.al.name
+          } catch (error) {
+            console.info('错误',error,music)
+            app.musicObj.music.coverImgUrl = t.data.alPicUrl
+            app.musicObj.music.epname = music.album.name
+          }
+          
           // 设置专辑名称
-          app.musicObj.music.epname = music.al.name
+          
           //设置 歌手名
           app.musicObj.music.singer = arsJoin
           app.musicObj.music.play()
@@ -206,7 +238,7 @@ Page({
       }
     })
           // 请求获取评论
-          let plUrl = sendUrl.baseUrl + 'comment/hot?id='+t.data.id+'&type=0&limit=50'
+          let plUrl = sendUrl.baseUrl + 'comment/hot?id='+music.id+'&type=0&limit=50'
           wx.request({
             url: plUrl,
             success: function(res){

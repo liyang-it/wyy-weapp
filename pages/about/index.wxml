@@ -1,5 +1,5 @@
 <!--导航栏-->
-<about-head height="{{height}}">
+<about-head height="{{height}}" bgColor="{{bgColor}}">
   <!--关于数据开始-->
 <view class="gy" style="top:{{height}}px;">
   <image src="../../static/images/logo3.png" class="gy_log"></image>
@@ -13,6 +13,11 @@
     <van-cell  value="复制" bind:tap="copyLink" data-text="{{vueLink}}">
       <view slot="title">
         <span class="custom-title" style="font-size: 15px;font-weight: bold;">Vue版</span>
+      </view>
+    </van-cell>
+    <van-cell  value="进入" bind:tap="openWeapp">
+      <view slot="title">
+        <span class="custom-title" style="font-size: 15px;font-weight: bold;">我的工具箱</span>
       </view>
     </van-cell>
   </view>

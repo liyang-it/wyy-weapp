@@ -6,6 +6,9 @@ Component({
   properties: {
     height:{
       type: Number
+    },
+    bgColor:{
+      type: String
     }
   },
 

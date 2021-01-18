@@ -12,7 +12,10 @@ Page({
     gs:{},
     musics:[],
     showXq: false,
-    music:{}
+    music:{},
+    jianjie: '不满足是向上的齿轮。',
+    ac1: '介绍',
+    ac2:'时间线'
 
   },
 
@@ -36,7 +39,7 @@ Page({
     wx.request({
       url: getGsHot,
       success:function(res){
-        t.setData({musics:res.data.songs})
+        t.setData({musics:res.data.songs,jianjie: '歌手简介：',ac2: '热门歌曲'})
         console.info(t.data.musics)
         wx.hideLoading()
       }

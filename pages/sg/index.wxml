@@ -4,14 +4,14 @@
     <image src="{{gs.artist.cover}}"></image>
   </view>
   <view class="main-content">
-    <van-tabs sticky animated swipeable type="card">
-      <van-tab title="主页">
+    <van-tabs animated swipeable type="card">
+      <van-tab title="{{ac1}}">
         <view class="main-content-desc">
-           <strong>歌手简介</strong>
+           <strong>{{jianjie}}</strong>
            <p>{{gs.artist.briefDesc}}</p>
         </view>
       </van-tab>
-      <van-tab title="热门歌曲">
+      <van-tab title="{{ac2}}">
         <!--歌单 歌曲列表开始-->
           <van-cell   label="{{item.ar[0].name + ' - ' + item.al.name}}" wx:for="{{musics}}" wx:for-index="index" wx:for-item="item" wx:key="key" bind:tap="startMusic"  data-index="{{index}}"  data-text="{{item}}">
             <view slot="title" >
